@@ -1,0 +1,81 @@
+package com.company;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class Cell
+{
+    private int row, col;
+    public Cell north, south, east, west;
+    public ArrayList<Cell> neighbors = new ArrayList<>();
+    private ArrayList<Cell> links = new ArrayList<>();
+
+    public Cell(int row, int col)
+    {
+        this.row = row;
+        this.col = col;
+    }
+
+    public void link(Cell c)
+    { link(c, false); }
+    public void link(Cell c, boolean done)
+    {
+        if (c == null) { return; }
+        if(!links.contains(c)) { links.add(c); }
+        if(!done) { c.link(this, true); }
+    }
+
+    public void unlink(Cell c)
+    { unlink(c, false); }
+    public void unlink(Cell c, boolean done)
+    {
+        while(links.contains(c)) { links.remove(c); }
+        if(!done) { c.unlink(this, true); }
+    }
+
+    public ArrayList<Cell> getLinks()
+    { return links; }
+    public boolean isLinked(Cell c)
+    {
+        if (c == null) { return false; }
+        return links.contains(c);
+    }
+
+    //public void linkNeighbors()
+    //{ link(up); link(down); link(right); link(left); }
+
+    public void updateNeighbors()
+    {
+        neighbors = new ArrayList<>();
+        if (north!=null) { neighbors.add(north); }
+        if (south!=null) { neighbors.add(south); }
+        if (east!=null) { neighbors.add(east); }
+        if (west!=null) { neighbors.add(west); }
+    }
+
+    public Distances distances()
+    {
+        Distances distances = new Distances(this);
+        ArrayList<Cell> frontier = new ArrayList<>();
+        frontier.add(this);
+
+        while(frontier.size() > 0)
+        {
+            ArrayList<Cell> newFrontier = new ArrayList<>();
+
+            for (Cell c : frontier)
+            {
+                for (Cell link : c.getLinks())
+                {
+                    if (distances.contains(link))
+                    { continue; }
+
+                    distances.put(link, distances.get(c) + 1);
+                    newFrontier.add(link);
+                }
+            }
+            frontier = newFrontier;
+        }
+        return distances;
+    }
+}
