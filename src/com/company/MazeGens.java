@@ -25,4 +25,13 @@ public class MazeGens
         }
         return;
     }
+
+    public static void printLongestPath(DistanceGrid g)
+    {
+        Cell start = g.getCell(0,0).distances().max();
+        Distances d = start.distances();
+        Cell end = d.max();
+        g.setDistances(d.pathTo(end));
+        System.out.println(g);
+    }
 }

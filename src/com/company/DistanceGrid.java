@@ -17,4 +17,6 @@ public class DistanceGrid extends Grid
 
     public void setDistances(Distances d)
     { distances = d; }
+    public Distances getDistances()
+    { return distances; }
 }
