@@ -78,4 +78,10 @@ public class Cell
         }
         return distances;
     }
+
+    public Cell randNeighbor()
+    {
+        int idx = (int) (Math.random() * neighbors.size());
+        return neighbors.get(idx);
+    }
 }

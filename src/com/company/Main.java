@@ -4,7 +4,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        longestPath();
+        DistanceGrid g = new DistanceGrid(6,6);
+        MazeGens.AldousBroder(g);
+        System.out.println(g);
     }
 
     public static void dijkstra()

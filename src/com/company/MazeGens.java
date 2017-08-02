@@ -26,6 +26,23 @@ public class MazeGens
         return;
     }
 
+    public static void AldousBroder(Grid g)
+    {
+        Cell c = g.randCell();
+        int cellsLeft = g.size() - 1;
+
+        while(cellsLeft > 0)
+        {
+            Cell n = c.randNeighbor();
+            if(n.getLinks().size() == 0)
+            {
+                c.link(n);
+                cellsLeft--;
+            }
+            c = n;
+        }
+    }
+
     public static void printLongestPath(DistanceGrid g)
     {
         Cell start = g.getCell(0,0).distances().max();
