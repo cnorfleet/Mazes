@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MazeGens
@@ -26,7 +27,7 @@ public class MazeGens
         return;
     }
 
-    public static void AldousBroder(Grid g)
+    public static void aldousBroder(Grid g)
     {
         Cell c = g.randCell();
         int cellsLeft = g.size() - 1;
@@ -40,6 +41,28 @@ public class MazeGens
                 cellsLeft--;
             }
             c = n;
+        }
+    }
+
+    public static void recursiveBacktracker(Grid g)
+    { recursiveBacktracker(g, g.randCell()); }
+    public static void recursiveBacktracker(Grid g, Cell start)
+    {
+        ArrayList<Cell> stack = new ArrayList<>();
+        stack.add(start);
+
+        while (stack.size() > 0)
+        {
+            Cell c = stack.get(stack.size() - 1);
+            ArrayList<Cell> neighbors = c.unlinkedNeighbors();
+            if (neighbors.size() == 0)
+            { stack.remove(stack.size() - 1); }
+            else
+            {
+                Cell n = c.randUnlinkedNeighbor();
+                c.link(n);
+                stack.add(n);
+            }
         }
     }
 

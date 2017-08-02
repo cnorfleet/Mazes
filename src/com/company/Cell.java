@@ -41,18 +41,6 @@ public class Cell
         return links.contains(c);
     }
 
-    //public void linkNeighbors()
-    //{ link(up); link(down); link(right); link(left); }
-
-    public void updateNeighbors()
-    {
-        neighbors = new ArrayList<>();
-        if (north!=null) { neighbors.add(north); }
-        if (south!=null) { neighbors.add(south); }
-        if (east!=null) { neighbors.add(east); }
-        if (west!=null) { neighbors.add(west); }
-    }
-
     public Distances distances()
     {
         Distances distances = new Distances(this);
@@ -79,9 +67,36 @@ public class Cell
         return distances;
     }
 
+    public void updateNeighbors()
+    {
+        neighbors = new ArrayList<>();
+        if (north!=null) { neighbors.add(north); }
+        if (south!=null) { neighbors.add(south); }
+        if (east!=null) { neighbors.add(east); }
+        if (west!=null) { neighbors.add(west); }
+    }
+
     public Cell randNeighbor()
     {
         int idx = (int) (Math.random() * neighbors.size());
         return neighbors.get(idx);
+    }
+
+    public ArrayList<Cell> unlinkedNeighbors()
+    {
+        ArrayList<Cell> n = new ArrayList<>();
+        for (Cell c : neighbors)
+        {
+            if (c.getLinks().size()==0)
+            { n.add(c); }
+        }
+        return n;
+    }
+
+    public Cell randUnlinkedNeighbor()
+    {
+        ArrayList<Cell> n = unlinkedNeighbors();
+        int idx = (int) (Math.random() * n.size());
+        return n.get(idx);
     }
 }

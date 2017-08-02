@@ -5,7 +5,7 @@ public class Main
     public static void main(String[] args)
     {
         DistanceGrid g = new DistanceGrid(6,6);
-        MazeGens.AldousBroder(g);
+        MazeGens.recursiveBacktracker(g);
         System.out.println(g);
     }
 
