@@ -66,6 +66,58 @@ public class MazeGens
         }
     }
 
+    public static void recursiveDivision(Grid g)
+    {
+        int rows = g.rows(), cols = g.cols();
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                ArrayList<Cell> n = g.getCell(r,c).neighbors;
+                for (Cell i : n)
+                { g.getCell(r,c).link(i,true); }
+            }
+        }
+        divide(g, 0, 0, rows, cols);
+    }
+    private static void divide(Grid g, int row, int col, int height, int width)
+    {
+        int maxRoomDim = 6;
+        if (height <= 1 || width <= 1 || (height < maxRoomDim && width < maxRoomDim && Math.random() < .3))
+        { return; }
+
+        if (height > width || (height == width && Math.random() < 0.5)) //divide horizontally
+        {
+            int divideBelow = (int) (Math.random() * (height - 1));
+            int passageLoc = (int) (Math.random() * width);
+
+            for (int c = col; c < col + width; c++)
+            {
+                if (c == col + passageLoc) { continue; }
+                Cell cell = g.getCell(row + divideBelow, c);
+                cell.unlink(cell.north);
+            }
+
+            divide(g, row, col, divideBelow+1, width);
+            divide(g, row+divideBelow+1, col, height-divideBelow-1, width);
+        }
+        else //divide vertically
+        {
+            int divideRightOf = (int) (Math.random() * (width - 1));
+            int passageLoc = (int) (Math.random() * height);
+
+            for (int r = row; r < row + height; r++)
+            {
+                if (r == row + passageLoc) { continue; }
+                Cell cell = g.getCell(r, col + divideRightOf);
+                cell.unlink(cell.east);
+            }
+
+            divide(g, row, col, height, divideRightOf+1);
+            divide(g, row, col+divideRightOf+1, height, width-divideRightOf-1);
+        }
+    }
+
     public static void printLongestPath(DistanceGrid g)
     {
         Cell start = g.getCell(0,0).distances().max();
