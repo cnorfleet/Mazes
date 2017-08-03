@@ -75,11 +75,21 @@ public class Cell
         if (east!=null) { neighbors.add(east); }
         if (west!=null) { neighbors.add(west); }
     }
-
     public Cell randNeighbor()
     {
         int idx = (int) (Math.random() * neighbors.size());
         return neighbors.get(idx);
+    }
+
+    public ArrayList<Cell> disconnectedNeighbors()
+    {
+        ArrayList<Cell> n = new ArrayList<>();
+        for (Cell c : neighbors)
+        {
+            if (!c.getLinks().contains(this))
+            { n.add(c); }
+        }
+        return n;
     }
 
     public ArrayList<Cell> unlinkedNeighbors()
@@ -92,7 +102,6 @@ public class Cell
         }
         return n;
     }
-
     public Cell randUnlinkedNeighbor()
     {
         ArrayList<Cell> n = unlinkedNeighbors();

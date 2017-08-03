@@ -6,6 +6,7 @@ public class Main
     {
         DistanceGrid g = new DistanceGrid(6,6);
         MazeGens.recursiveBacktracker(g);
+        //g.braid(1);
         System.out.println(g);
     }
 

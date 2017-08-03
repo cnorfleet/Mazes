@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89a387db-694e-4dcc-ba4c-a4cdca9781e8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Mazes1/com/company/Cell.class" afterPath="$PROJECT_DIR$/out/production/Mazes1/com/company/Cell.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Mazes1/com/company/Grid.class" afterPath="$PROJECT_DIR$/out/production/Mazes1/com/company/Grid.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Mazes1/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/Mazes1/com/company/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Cell.java" afterPath="$PROJECT_DIR$/src/com/company/Cell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Grid.java" afterPath="$PROJECT_DIR$/src/com/company/Grid.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/MazeGens.java" afterPath="$PROJECT_DIR$/src/com/company/MazeGens.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +23,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding>
                 <element signature="method#dijkstra#0;class#Main#0" expanded="false" />
                 <element signature="method#longestPath#0;class#Main#0" expanded="false" />
@@ -32,14 +36,14 @@
       <file leaf-file-name="MazeGens.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/MazeGens.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="475">
+              <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+                <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
                 <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
                 <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-                <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -48,8 +52,8 @@
       <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="229">
+              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Cell#0;class#Cell#0" expanded="false" />
@@ -59,6 +63,7 @@
                 <element signature="method#distances#0;class#Cell#0" expanded="false" />
                 <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
                 <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+                <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
                 <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
                 <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
               </folding>
@@ -69,9 +74,13 @@
       <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Grid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2325">
-              <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-              <folding />
+            <state relative-caret-position="379">
+              <caret line="132" column="5" lean-forward="true" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
+              <folding>
+                <element signature="method#toString#0;class#Grid#0" expanded="false" />
+                <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+                <element signature="method#braid#1;class#Grid#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/DistanceGrid.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -125,12 +134,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/Grid.java" />
         <option value="$PROJECT_DIR$/src/com/company/DistanceGrid.java" />
         <option value="$PROJECT_DIR$/src/com/company/Distances.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Cell.java" />
         <option value="$PROJECT_DIR$/src/com/company/MazeGens.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Cell.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Grid.java" />
       </list>
     </option>
   </component>
@@ -400,7 +409,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3372093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3372093" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -435,7 +444,7 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -486,9 +495,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -506,6 +515,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -516,7 +526,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -554,7 +568,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -571,6 +589,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -603,9 +622,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -628,9 +647,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -648,6 +667,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -658,7 +678,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -699,9 +723,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -719,6 +743,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -729,7 +754,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -770,9 +799,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -790,6 +819,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -800,7 +830,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2325">
           <caret line="93" column="1" lean-forward="true" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,7 +872,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1000">
           <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -855,6 +893,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -885,6 +924,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -895,7 +935,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -923,6 +967,7 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
@@ -933,7 +978,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -969,7 +1018,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/DistanceGrid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -989,22 +1038,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="456" column="19" lean-forward="false" selection-start-line="456" selection-start-column="19" selection-end-line="456" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Grid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2325">
-          <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="229">
+          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Cell#0;class#Cell#0" expanded="false" />
@@ -1014,30 +1054,43 @@
             <element signature="method#distances#0;class#Cell#0" expanded="false" />
             <element signature="method#updateNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randNeighbor#0;class#Cell#0" expanded="false" />
+            <element signature="method#disconnectedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#unlinkedNeighbors#0;class#Cell#0" expanded="false" />
             <element signature="method#randUnlinkedNeighbor#0;class#Cell#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Grid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="132" column="5" lean-forward="true" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="5" />
+          <folding>
+            <element signature="method#toString#0;class#Grid#0" expanded="false" />
+            <element signature="method#deadEnds#0;class#Grid#0" expanded="false" />
+            <element signature="method#braid#1;class#Grid#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MazeGens.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="475">
+          <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#binaryTree#0;class#MazeGens#0" expanded="false" />
+            <element signature="method#aldousBroder#0;class#MazeGens#0" expanded="false" />
             <element signature="method#recursiveBacktracker#1;class#MazeGens#0" expanded="false" />
             <element signature="method#printLongestPath#0;class#MazeGens#0" expanded="false" />
-            <marker date="1501699316121" expanded="false" signature="884:1193" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding>
             <element signature="method#dijkstra#0;class#Main#0" expanded="false" />
             <element signature="method#longestPath#0;class#Main#0" expanded="false" />

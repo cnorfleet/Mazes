@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Grid
 {
     private int rows, cols;
@@ -91,4 +93,42 @@ public class Grid
     }
     public String contentsOf(Cell c)
     { return " "; }
+
+    public ArrayList<Cell> deadEnds()
+    {
+        ArrayList<Cell> l = new ArrayList<>();
+        for (Cell[] a : grid)
+        {
+            for (Cell c : a)
+            {
+                if(c.getLinks().size() == 1)
+                { l.add(c); }
+            }
+        }
+        return l;
+    }
+
+    public void braid()
+    { braid(1); }
+    public void braid(double percent)
+    {
+        ArrayList<Cell> deadEnds = deadEnds();
+        for (Cell c : deadEnds)
+        {
+            if(c.getLinks().size() != 1 || Math.random() > percent)
+            { continue; }
+
+            ArrayList<Cell> best = new ArrayList<>();
+            for (Cell n : c.disconnectedNeighbors())
+            {
+                if (n.getLinks().size()==1)
+                { best.add(n); }
+            }
+            if(best.size()==0)
+            { best = c.disconnectedNeighbors(); }
+
+            int idx = (int) (Math.random() * best.size());
+            c.link(best.get(idx));
+        }
+    }
 }
