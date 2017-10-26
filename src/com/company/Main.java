@@ -4,10 +4,11 @@ public class Main
 {
     public static void main(String[] args)
     {
-        DistanceGrid g = new DistanceGrid(8,8);
-        MazeGens.recursiveDivision(g);
+        DistanceGrid g = new DistanceGrid(6,6);
+        MazeGens.aldousBroder(g);
         //g.braid(1);
-        System.out.println(g);
+        //System.out.println(g);
+        MazeGens.printLongestPath(g);
     }
 
     public static void dijkstra()
