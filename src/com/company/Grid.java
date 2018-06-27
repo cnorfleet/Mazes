@@ -1,5 +1,10 @@
 package com.company;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Grid
@@ -130,5 +135,39 @@ public class Grid
             int idx = (int) (Math.random() * best.size());
             c.link(best.get(idx));
         }
+    }
+
+    public void draw() throws IOException
+    { draw(15); }
+    public void draw(int cellSize) throws IOException
+    {
+        try
+        {
+            int width = cellSize*cols+1, height = cellSize*rows+1;
+            BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            Graphics2D g = image.createGraphics();
+            g.setPaint(Color.white);
+            g.fillRect(0,0,width,height);
+            g.setPaint(Color.black);
+            for(int r = 0; r < rows; r++)
+            {
+                for(int c = 0; c < cols; c++)
+                {
+                    int x1 = c * cellSize;
+                    int y1 = r * cellSize;
+                    int x2 = (c+1) * cellSize;
+                    int y2 = (r+1) * cellSize;
+
+                    if(r == 0) { g.drawLine(x1,y1,x2,y1); }
+                    if(c == 0) { g.drawLine(x1,y1,x1,y2);}
+                    if(c == cols-1 || !grid[r][c].isLinked(grid[r][c].east)) { g.drawLine(x2,y1,x2,y2); }
+                    if(r == rows-1 || !grid[r][c].isLinked(grid[r][c].north)) { g.drawLine(x1,y2,x2,y2); }
+                }
+            }
+            ImageIO.write(image, "JPEG", new File("maze.jpg"));
+            //ImageIO.write(image, "PNG", new File("maze.png"));
+        }
+        catch (IOException e)
+        { System.out.println("whoops"); }
     }
 }

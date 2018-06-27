@@ -1,14 +1,19 @@
 package com.company;
 
+import java.io.IOException;
+
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        DistanceGrid g = new DistanceGrid(6,6);
+        DistanceGrid g = new DistanceGrid(16,16);
         MazeGens.aldousBroder(g);
+        //MazeGens.recursiveBacktracker(g);
         //g.braid(1);
         //System.out.println(g);
-        MazeGens.printLongestPath(g);
+        //MazeGens.printLongestPath(g);
+        g.draw();
+        //g.drawSolved();
     }
 
     public static void dijkstra()
