@@ -19,4 +19,13 @@ public class DistanceGrid extends Grid
     { distances = d; }
     public Distances getDistances()
     { return distances; }
+
+    public void printLongestPath()
+    {
+        Cell start = getCell(0,0).distances().max();
+        Distances d = start.distances();
+        Cell end = d.max();
+        setDistances(d.pathTo(end));
+        System.out.println();
+    }
 }

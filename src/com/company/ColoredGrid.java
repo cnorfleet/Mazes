@@ -8,8 +8,10 @@ import java.io.IOException;
 
 public class ColoredGrid extends DistanceGrid
 {
-    public ColoredGrid(int r, int c)
-    { super(r, c); }
+    private Color fillColor;
+
+    public ColoredGrid(int r, int c, Color color)
+    { super(r, c); fillColor = color; }
 
     @Override
     public void draw() throws IOException
@@ -22,7 +24,8 @@ public class ColoredGrid extends DistanceGrid
         try
         {
             int maxDist = getDistances().get(getDistances().max());
-            int width = cellSize*cols()+1, height = cellSize*rows()+1;
+            int width = cellSize*cols(), height = cellSize*rows();
+            if(showOutline) { width++; height++; }
             BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = image.createGraphics();
             g.setPaint(Color.white);
@@ -36,7 +39,8 @@ public class ColoredGrid extends DistanceGrid
                     int x2 = (c+1) * cellSize;
                     int y2 = (r+1) * cellSize;
                     int intensity = (350 * getDistances().get(getCell(r,c))) / maxDist;
-                    int R = 255-intensity, G = 510 - intensity, B = 255 - intensity;
+                    int deltaIntensity = 255 - intensity;
+                    int R = fillColor.getRed() + deltaIntensity, G = fillColor.getGreen() + deltaIntensity, B = fillColor.getBlue() + deltaIntensity;
                     if(R > 255) { R = 255; } if( R < 0) { R = 0; }
                     if(G > 255) { G = 255; } if( G < 0) { G = 0; }
                     if(B > 255) { B = 255; } if( B < 0) { B = 0; }

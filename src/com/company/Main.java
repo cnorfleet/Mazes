@@ -1,16 +1,18 @@
 package com.company;
 
+import java.awt.Color;
+
 import java.io.IOException;
 
 public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        ColoredGrid g = new ColoredGrid(1000,1000);
-        MazeGens.aldousBroder(g);
-        //MazeGens.recursiveBacktracker(g);
+        int size = 1000;
+        ColoredGrid g = new ColoredGrid(size,size, new Color(255, 253, 46));
+        MazeGens.primsAlgorithm(g);
         //MazeGens.printLongestPath(g);
-        Cell start = g.getCell(0,0);
+        Cell start = g.getCell(size/2,size/2);
         g.setDistances(start.distances());
         g.draw(1,false);
     }
@@ -32,7 +34,7 @@ public class Main
     {
         DistanceGrid g = new DistanceGrid(6,6);
         MazeGens.binaryTree(g);
-        MazeGens.printLongestPath(g);
+        g.printLongestPath();
     }
 
     public static void drawMaze() throws IOException
@@ -41,7 +43,7 @@ public class Main
         MazeGens.aldousBroder(g);
         //MazeGens.recursiveBacktracker(g);
         //g.braid(1);
-        //System.out.println(g);
+        System.out.println(g);
         //MazeGens.printLongestPath(g);
         g.draw();
     }

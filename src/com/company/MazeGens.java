@@ -118,12 +118,38 @@ public class MazeGens
         }
     }
 
-    public static void printLongestPath(DistanceGrid g)
+    public static void primsAlgorithm(Grid g)
+    { primsAlgorithm(g, g.randCell()); }
+    public static void primsAlgorithm(Grid g, Cell start)
     {
-        Cell start = g.getCell(0,0).distances().max();
-        Distances d = start.distances();
-        Cell end = d.max();
-        g.setDistances(d.pathTo(end));
-        System.out.println(g);
+        ArrayList<Cell> stack = new ArrayList<>(); //the frontier
+        start.visted = true;
+        for(Cell c : start.neighbors)
+        { stack.add(c); }
+
+        while (stack.size() > 0)
+        {
+            int cIdx = (int) (Math.random() * stack.size());
+            Cell c = stack.get(cIdx);
+            ArrayList<Cell> options = new ArrayList<>();
+            for(Cell n : c.neighbors)
+            {
+                if(n.visted)
+                { options.add(n); }
+            }
+            if (options.size() == 0)
+            { stack.remove(cIdx); }
+            else
+            {
+                int nIdx = (int) (Math.random() * options.size());
+                Cell n = options.get(nIdx);
+                c.link(n); c.visted = true;
+                for(Cell cell : c.neighbors)
+                {
+                    if(!cell.visted)
+                    { stack.add(cell); }
+                }
+            }
+        }
     }
 }

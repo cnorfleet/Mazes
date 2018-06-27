@@ -9,6 +9,7 @@ public class Cell
     public Cell north, south, east, west;
     public ArrayList<Cell> neighbors = new ArrayList<>();
     private ArrayList<Cell> links = new ArrayList<>();
+    public boolean visted = false; //useful for some maze generators
 
     public Cell(int row, int col)
     {
