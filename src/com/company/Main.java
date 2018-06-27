@@ -6,14 +6,13 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        DistanceGrid g = new DistanceGrid(16,16);
+        ColoredGrid g = new ColoredGrid(1000,1000);
         MazeGens.aldousBroder(g);
         //MazeGens.recursiveBacktracker(g);
-        //g.braid(1);
-        //System.out.println(g);
         //MazeGens.printLongestPath(g);
-        g.draw();
-        //g.drawSolved();
+        Cell start = g.getCell(0,0);
+        g.setDistances(start.distances());
+        g.draw(1,false);
     }
 
     public static void dijkstra()
@@ -34,5 +33,16 @@ public class Main
         DistanceGrid g = new DistanceGrid(6,6);
         MazeGens.binaryTree(g);
         MazeGens.printLongestPath(g);
+    }
+
+    public static void drawMaze() throws IOException
+    {
+        DistanceGrid g = new DistanceGrid(20,20);
+        MazeGens.aldousBroder(g);
+        //MazeGens.recursiveBacktracker(g);
+        //g.braid(1);
+        //System.out.println(g);
+        //MazeGens.printLongestPath(g);
+        g.draw();
     }
 }
