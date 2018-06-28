@@ -1,7 +1,11 @@
 package com.company;
 
+import javafx.util.Pair;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MazeGens
 {
@@ -131,24 +135,68 @@ public class MazeGens
         {
             int cIdx = (int) (Math.random() * stack.size());
             Cell c = stack.get(cIdx);
+            stack.remove(cIdx);
             ArrayList<Cell> options = new ArrayList<>();
             for(Cell n : c.neighbors)
             {
                 if(n.visted)
                 { options.add(n); }
             }
-            if (options.size() == 0)
-            { stack.remove(cIdx); }
-            else
+            if (options.size() != 0)
             {
                 int nIdx = (int) (Math.random() * options.size());
                 Cell n = options.get(nIdx);
                 c.link(n); c.visted = true;
                 for(Cell cell : c.neighbors)
                 {
-                    if(!cell.visted)
+                    if(!cell.visted && !stack.contains(cell))
                     { stack.add(cell); }
                 }
+            }
+        }
+    }
+
+    public static void kruskalsAlgorithm(Grid g)
+    {
+        //generate edge list
+        ArrayList<Cell[]> edges = new ArrayList<>();
+        for(int r = 0; r < g.rows(); r++)
+        {
+            for (int c = 0; c < g.cols(); c++)
+            {
+                Cell cell = g.getCell(r,c);
+                if(cell.north != null) { Cell[] temp1 = {cell, cell.north}; edges.add(temp1); }
+                if(cell.east != null) { Cell[] temp2 = {cell, cell.east}; edges.add(temp2); }
+                /* for(Cell n : cell.neighbors)
+                { Cell[] temp = {cell, n}; edges.add(temp); } */
+            }
+        }
+
+        //generate set list - use cantor pairing funtion to provide unique id for each set
+        Map<Cell, Integer> dictionary = new HashMap<>();
+        for(int r = 0; r < g.rows(); r++)
+        {
+            for(int c = 0; c < g.cols(); c++)
+            {
+                int cantorPairingID = (((r+c)*(r+c+1))/2)+c;
+                dictionary.put(g.getCell(r,c), cantorPairingID);
+            }
+        }
+
+        while(!edges.isEmpty())
+        {
+            Cell[] edge = edges.remove((int) (Math.random() * edges.size()));
+            Cell c1 = edge[0];
+            Cell c2 = edge[1];
+            if(dictionary.get(c1).equals(dictionary.get(c2))) //already in the same set
+            { continue; }
+            c1.link(c2);
+            int newID = dictionary.get(c1);
+            int oldID = dictionary.get(c2);
+            for(Cell key : dictionary.keySet())
+            {
+                if(dictionary.get(key) == oldID)
+                { dictionary.put(key, newID); }
             }
         }
     }
