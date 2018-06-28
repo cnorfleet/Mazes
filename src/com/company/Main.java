@@ -8,16 +8,21 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
+        long startTime = System.currentTimeMillis();
+        System.out.print("creating maze...");
         int size = 1000;
-        ColoredGrid g = new ColoredGrid(size,size, new Color(0, 0, 150));
+        ColoredGrid g = new ColoredGrid(size,size, new Color(0, 103, 29));
         MazeGens.growingForest(g);
         //System.out.println(g);
         //MazeGens.printLongestPath(g);
-        System.out.println("getting distances");
+        long nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
+        System.out.print("getting distances...");
         Cell start = g.getCell(size/2,size/2);
         g.setDistances(start.distances());
-        System.out.println("drawing");
+        nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
+        System.out.print("drawing...");
         g.draw(1,false);
+        nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
     }
 
     public static void dijkstra()

@@ -319,6 +319,8 @@ public class MazeGens
     }
 
     public static void growingForest(Grid g)
+    { growingForest(g, 20); }
+    public static void growingForest(Grid g, int numTrees)
     {
         //mark active cells
         ArrayList<Cell> activeCells = new ArrayList<>();
@@ -332,7 +334,7 @@ public class MazeGens
         {
             for(int c = 0; c < g.cols(); c++)
             {
-                if(Math.random() * (g.rows() * g.cols()) < 5)
+                if(Math.random() * (g.rows() * g.cols()) < numTrees)
                 {
                     activeCells.add(g.getCell(r,c));
                     treeIDs.put(g.getCell(r,c), nextID);
