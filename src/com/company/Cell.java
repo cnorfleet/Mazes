@@ -109,4 +109,9 @@ public class Cell
         int idx = (int) (Math.random() * n.size());
         return n.get(idx);
     }
+
+    public int getRow()
+    { return row; }
+    public int getCol()
+    { return col; }
 }

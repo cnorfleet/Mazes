@@ -4,6 +4,7 @@ import javafx.util.Pair;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -218,6 +219,101 @@ public class MazeGens
             {
                 if(dictionary.get(key) == oldID)
                 { dictionary.put(key, newID); }
+            }
+        }
+    }
+
+    public static void ellersAlgorithm(Grid g)
+    {
+        //set up first row
+        int nextID = 1;
+        Object[][] row = new Object[g.cols()][2];
+        for(int c = 0; c < g.cols(); c++)
+        { row[c][0] = g.getCell(0,c); row[c][1] = nextID; nextID++; }
+
+        for(int r = 0; r < g.rows() - 1; r++)
+        {
+            //connect horizontally
+            for(int c = 0; c < g.cols() - 1; c++)
+            {
+                if(!row[c][1].equals(row[c+1][1]) && Math.random() >= 0.5)
+                {
+                    ((Cell) row[c][0]).link((Cell) row[c+1][0]);
+                    Integer newID = (Integer) row[c][1];
+                    Integer oldId = (Integer) row[c+1][1];
+                    for(Object[] i : row)
+                    {
+                        if(((Integer) i[1]).equals(oldId))
+                        { i[1] = newID; }
+                    }
+                }
+            }
+
+            //set up sets of same-numbered things
+            HashMap<Integer, ArrayList<Cell>> dict = new HashMap<>();
+            for(int c = 0; c < g.cols(); c++)
+            {
+                if(dict.containsKey(row[c][1]))
+                { dict.get(row[c][1]).add((Cell) row[c][0]); }
+                else
+                { ArrayList<Cell> temp = new ArrayList<>(); temp.add((Cell) row[c][0]); dict.put((Integer) row[c][1], temp); }
+            }
+
+            Object[][] nextRow = new Object[g.cols()][2];
+            //set up next row
+            for(int c = 0; c < g.cols(); c++)
+            { nextRow[c][0] = g.getCell(r+1,c); nextRow[c][1] = 0; }
+
+            //connect vertically
+            for(Integer key : dict.keySet())
+            {
+                ArrayList<Cell> set = dict.get(key);
+                Collections.shuffle(set);
+                int num = 1 + (int) (Math.random() * (set.size() - 1));
+                for(int i = 0; i < num; i++)
+                {
+                    //System.out.println(set.get(i).north.getCol() + ", " + set.get(i).getCol() + ": " + row[set.get(i).getCol()][1]);
+                    set.get(i).link(set.get(i).north);
+                    nextRow[set.get(i).north.getCol()][1] = row[set.get(i).getCol()][1];
+                }
+            }
+
+            //assign ids to next row
+            for(int c = 0; c < g.cols(); c++)
+            {
+                if((int) nextRow[c][1] == (0))
+                { nextRow[c][1] = nextID; nextID++; }
+            }
+            row = nextRow;
+        }
+
+        //connect last row horizontally
+        for(int c = 0; c < g.cols() - 1; c++)
+        {
+            if(!row[c][1].equals(row[c+1][1]))
+            {
+                //see if there are other spots where they could be linked
+                int numOtherSpots = 0; boolean justFound = false;
+                for(int c2 = c+2; c2 < g.cols(); c2++)
+                {
+                    if(!justFound && row[c][1].equals(row[c2][1]))
+                    { numOtherSpots++; justFound = true; }
+                    else if (justFound && !row[c][1].equals(row[c2][1]))
+                    { justFound = false; }
+                }
+
+                //link the two
+                if (1 > Math.random() * (numOtherSpots + 1))
+                {
+                    ((Cell) row[c][0]).link((Cell) row[c + 1][0]);
+                    Integer newID = (Integer) row[c][1];
+                    Integer oldId = (Integer) row[c + 1][1];
+                    for (Object[] i : row) {
+                        if (((Integer) i[1]).equals(oldId)) {
+                            i[1] = newID;
+                        }
+                    }
+                }
             }
         }
     }

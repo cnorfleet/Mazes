@@ -9,8 +9,8 @@ public class Main
     public static void main(String[] args) throws IOException
     {
         int size = 1000;
-        ColoredGrid g = new ColoredGrid(size,size, new Color(67, 10, 120));
-        MazeGens.sidewinder(g);
+        ColoredGrid g = new ColoredGrid(size,size, new Color(0, 255, 0));
+        MazeGens.ellersAlgorithm(g);
         //System.out.println(g);
         //MazeGens.printLongestPath(g);
         Cell start = g.getCell(size/2,size/2);
