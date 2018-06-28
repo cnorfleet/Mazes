@@ -12,7 +12,7 @@ public class Main
         System.out.print("creating maze...");
         int size = 1000;
         ColoredGrid g = new ColoredGrid(size,size, new Color(0, 103, 29));
-        MazeGens.growingForest(g);
+        MazeGens.aldousBroder(g);
         //System.out.println(g);
         //MazeGens.printLongestPath(g);
         long nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
@@ -21,7 +21,8 @@ public class Main
         g.setDistances(start.distances());
         nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
         System.out.print("drawing...");
-        g.draw(1,false);
+        //g.draw(1,false);
+        g.fastDraw();
         nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
     }
 
