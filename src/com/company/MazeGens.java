@@ -317,4 +317,62 @@ public class MazeGens
             }
         }
     }
+
+    public static void growingForest(Grid g)
+    {
+        //mark active cells
+        ArrayList<Cell> activeCells = new ArrayList<>();
+        HashMap<Cell, Integer> treeIDs = new HashMap<>();
+        Cell firstActive = g.randCell();
+        activeCells.add(firstActive);
+        firstActive.visted = true;
+        treeIDs.put(firstActive, 1);
+        int nextID = 2;
+        for(int r = 0; r < g.rows(); r++)
+        {
+            for(int c = 0; c < g.cols(); c++)
+            {
+                if(Math.random() * (g.rows() * g.cols()) < 5)
+                {
+                    activeCells.add(g.getCell(r,c));
+                    treeIDs.put(g.getCell(r,c), nextID);
+                    g.getCell(r,c).visted = true;
+                    nextID++;
+                }
+            }
+        }
+
+        //generate stuff
+        while(activeCells.size() > 0)
+        {
+            Cell c = activeCells.get((int) (Math.random() * activeCells.size()));
+            ArrayList<Cell> next = new ArrayList<>();
+            for(Cell n : c.neighbors)
+            {
+                if(!n.visted || !(treeIDs.get(c).equals(treeIDs.get(n))))
+                { next.add(n); }
+            }
+            if(next.isEmpty())
+            { activeCells.remove(c); continue; }
+            Cell n = next.get((int) (Math.random() * next.size()));
+            if(treeIDs.containsKey(n) && !treeIDs.get(c).equals(treeIDs.get(n)))
+            {
+                int oldID = treeIDs.get(n);
+                for(Cell key : treeIDs.keySet())
+                {
+                    if(treeIDs.get(key).equals(oldID))
+                    { treeIDs.put(key, treeIDs.get(c)); }
+                }
+            }
+            else
+            { activeCells.add(n); n.visted = true; }
+            c.link(n);
+            treeIDs.put(n, treeIDs.get(c));
+        }
+    }
+
+    public static void depthFirstSearch(Grid g)
+    {
+
+    }
 }
