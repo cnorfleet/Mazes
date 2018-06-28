@@ -11,11 +11,9 @@ public class MazeGens
 {
     public static void binaryTree(Grid g)
     {
-        int rows = g.rows();
-        int cols = g.cols();
-        for (int r = 0; r < rows; r++)
+        for (int r = 0; r < g.rows(); r++)
         {
-            for (int c = 0; c < cols; c++)
+            for (int c = 0; c < g.cols(); c++)
             {
                 Cell cell = g.getCell(r,c);
                 cell.neighbors = new ArrayList<>();
@@ -28,7 +26,30 @@ public class MazeGens
                 cell.link(n);
             }
         }
-        return;
+    }
+
+    public static void sidewinder(Grid g)
+    {
+        for (int r = 0; r < g.rows(); r++)
+        {
+            ArrayList<Cell> group = new ArrayList<>();
+            for (int c = 0; c < g.cols(); c++)
+            {
+                Cell cell = g.getCell(r,c);
+                if(cell.north == null && cell.east == null) { continue; }
+                if(cell.north == null) { cell.link(cell.east); continue; }
+
+                if(cell.east == null || Math.random() >= 0.5) //connect with one cell in group
+                {
+                    group.add(cell);
+                    int idx = (int) (Math.random() * (double) group.size());
+                    group.get(idx).link(group.get(idx).north);
+                    group = new ArrayList<>();
+                }
+                else //connect with next cell
+                { group.add(cell); cell.link(cell.east); }
+            }
+        }
     }
 
     public static void aldousBroder(Grid g)
