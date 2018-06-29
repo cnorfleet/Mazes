@@ -196,17 +196,23 @@ public class MazeGens
 
         //generate set list - use cantor pairing funtion to provide unique id for each set
         Map<Cell, Integer> dictionary = new HashMap<>();
+        Map<Integer, ArrayList<Cell>> reverseDict = new HashMap<>();
         for(int r = 0; r < g.rows(); r++)
         {
             for(int c = 0; c < g.cols(); c++)
             {
                 int cantorPairingID = (((r+c)*(r+c+1))/2)+c;
                 dictionary.put(g.getCell(r,c), cantorPairingID);
+                ArrayList<Cell> temp = new ArrayList<>();
+                temp.add(g.getCell(r,c));
+                reverseDict.put(cantorPairingID, temp);
             }
         }
 
         while(!edges.isEmpty())
         {
+            if(edges.size() % 2000 == 0)
+            { System.out.println(edges.size()); }
             Cell[] edge = edges.remove((int) (Math.random() * edges.size()));
             Cell c1 = edge[0];
             Cell c2 = edge[1];
@@ -215,10 +221,10 @@ public class MazeGens
             c1.link(c2);
             int newID = dictionary.get(c1);
             int oldID = dictionary.get(c2);
-            for(Cell key : dictionary.keySet())
+            for(Cell c : reverseDict.get(oldID))
             {
-                if(dictionary.get(key) == oldID)
-                { dictionary.put(key, newID); }
+                dictionary.put(c, newID);
+                reverseDict.get(newID).add(c);
             }
         }
     }
@@ -371,10 +377,5 @@ public class MazeGens
             c.link(n);
             treeIDs.put(n, treeIDs.get(c));
         }
-    }
-
-    public static void depthFirstSearch(Grid g)
-    {
-
     }
 }

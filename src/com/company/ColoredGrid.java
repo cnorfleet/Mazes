@@ -74,7 +74,7 @@ public class ColoredGrid extends DistanceGrid
         { System.out.println("whoops"); }
     }
 
-    public void fastDraw()
+    public void fastDraw(String fileName)
     {
         try
         {
@@ -83,20 +83,28 @@ public class ColoredGrid extends DistanceGrid
             for(int r = 0; r < rows(); r++)
             {
                 for(int c = 0; c < cols(); c++)
-                {
-                    int intensity = (350 * getDistances().get(getCell(r,c))) / maxDist;
-                    int deltaIntensity = 255 - intensity;
-                    int R = fillColor.getRed() + deltaIntensity, G = fillColor.getGreen() + deltaIntensity, B = fillColor.getBlue() + deltaIntensity;
-                    if(R > 255) { R = 255; } if( R < 0) { R = 0; }
-                    if(G > 255) { G = 255; } if( G < 0) { G = 0; }
-                    if(B > 255) { B = 255; } if( B < 0) { B = 0; }
-                    image.setRGB(c,r,new Color(R,G,B).getRGB());
-                }
+                { image.setRGB(c,r,getColor(getDistances().get(getCell(r,c)), maxDist).getRGB()); }
             }
-            ImageIO.write(image, "JPEG", new File("maze.jpg"));
+            ImageIO.write(image, "JPEG", new File(fileName));
             //ImageIO.write(image, "PNG", new File("maze.png"));
         }
         catch (IOException e)
         { System.out.println("whoops"); }
+    }
+
+    private Color getColor(int dist, int maxDist)
+    {
+        int intensity = (350 * dist / maxDist);
+        int deltaIntensity = 255 - intensity;
+        int R = fillColor.getRed() + deltaIntensity, G = fillColor.getGreen() + deltaIntensity, B = fillColor.getBlue() + deltaIntensity;
+        if(R > 255) { R = 255; } if( R < 0) { R = 0; }
+        if(G > 255) { G = 255; } if( G < 0) { G = 0; }
+        if(B > 255) { B = 255; } if( B < 0) { B = 0; }
+        return new Color(R,G,B);
+    }
+
+    private Color getRainbow(int dist, int maxDist)
+    {
+        return null;
     }
 }

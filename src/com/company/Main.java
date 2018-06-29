@@ -8,22 +8,25 @@ public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        long startTime = System.currentTimeMillis();
-        System.out.print("creating maze...");
-        int size = 1000;
-        ColoredGrid g = new ColoredGrid(size,size, new Color(0, 103, 29));
-        MazeGens.aldousBroder(g);
-        //System.out.println(g);
-        //MazeGens.printLongestPath(g);
-        long nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
-        System.out.print("getting distances...");
-        Cell start = g.getCell(size/2,size/2);
-        g.setDistances(start.distances());
-        nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
-        System.out.print("drawing...");
-        //g.draw(1,false);
-        g.fastDraw();
-        nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
+        for(int i = 1; i <= 3; i++)
+        {
+            long startTime = System.currentTimeMillis();
+            System.out.print("creating maze...");
+            int size = 1000;
+            ColoredGrid g = new ColoredGrid(size,size, new Color(0, 255, 0));
+            MazeGens.aldousBroder(g);//, g.getCell(size/2,size/2));
+            //System.out.println(g);
+            //MazeGens.printLongestPath(g);
+            long nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
+            System.out.print("getting distances...");
+            Cell start = g.getCell(size/2,size/2);//size/2,size/2);
+            g.setDistances(start.distances());
+            nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
+            System.out.print("drawing...");
+            //g.draw(1,false);
+            g.fastDraw("maze" + (i+0) + ".jpg");
+            nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
+        }
     }
 
     public static void dijkstra()
