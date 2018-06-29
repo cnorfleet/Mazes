@@ -24,7 +24,7 @@ public class Main
             nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
             System.out.print("drawing...");
             //g.draw(1,false);
-            g.fastDraw("maze" + (i+0) + ".jpg");
+            g.fastDraw("aldous" + (i+7) + ".jpg", true);
             nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
         }
     }

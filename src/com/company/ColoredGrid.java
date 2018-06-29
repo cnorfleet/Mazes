@@ -75,6 +75,8 @@ public class ColoredGrid extends DistanceGrid
     }
 
     public void fastDraw(String fileName)
+    { fastDraw(fileName, false); }
+    public void fastDraw(String fileName, boolean rainbow)
     {
         try
         {
@@ -83,7 +85,12 @@ public class ColoredGrid extends DistanceGrid
             for(int r = 0; r < rows(); r++)
             {
                 for(int c = 0; c < cols(); c++)
-                { image.setRGB(c,r,getColor(getDistances().get(getCell(r,c)), maxDist).getRGB()); }
+                {
+                    if(!rainbow)
+                    { image.setRGB(c,r,getColor(getDistances().get(getCell(r,c)), maxDist).getRGB()); }
+                    else
+                    { image.setRGB(c,r,getRainbow(getDistances().get(getCell(r,c)), maxDist).getRGB()); }
+                }
             }
             ImageIO.write(image, "JPEG", new File(fileName));
             //ImageIO.write(image, "PNG", new File("maze.png"));
@@ -105,6 +112,6 @@ public class ColoredGrid extends DistanceGrid
 
     private Color getRainbow(int dist, int maxDist)
     {
-        return null;
+        return Color.getHSBColor((3f*dist/maxDist)%1,0.7f,0.9f);
     }
 }
