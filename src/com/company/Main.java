@@ -12,7 +12,7 @@ public class Main
         {
             long startTime = System.currentTimeMillis();
             System.out.print("creating maze...");
-            int size = 1000;
+            int size = 6000;
             ColoredGrid g = new ColoredGrid(size,size, new Color(0, 255, 0));
             MazeGens.aldousBroder(g);//, g.getCell(size/2,size/2));
             //System.out.println(g);
@@ -24,7 +24,7 @@ public class Main
             nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec"); startTime = nextTime;
             System.out.print("drawing...");
             //g.draw(1,false);
-            g.fastDraw("aldous" + (i+7) + ".jpg", true);
+            g.fastDraw("maze" + (i+0) + ".jpg", true);
             nextTime = System.currentTimeMillis(); System.out.println((nextTime - startTime)/1000F + " sec");
         }
     }

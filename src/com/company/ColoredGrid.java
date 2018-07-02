@@ -112,6 +112,11 @@ public class ColoredGrid extends DistanceGrid
 
     private Color getRainbow(int dist, int maxDist)
     {
-        return Color.getHSBColor((3f*dist/maxDist)%1,0.7f,0.9f);
+        return Color.getHSBColor((5f*dist/maxDist)%1,0.45f,0.85f);//0.7f,0.9f);
+    }
+
+    private Color getBiFlagColor(int dist, int maxDist)
+    {
+        return Color.getHSBColor(((3f*dist/maxDist)%0.3f)+0.66f,0.7f,0.9f);
     }
 }
